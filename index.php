@@ -5,9 +5,9 @@ require_once('./includes/functions.inc.php');
 // $query = "SELECT * FROM contacts";
 // $rows = db_select($query);
 $page = 1;
-if (isset($_GET['page'])) {
+if (isset($_GET['page']))
     $page = $_GET['page'];
-}
+
 $num_of_rows_per_page = 4;
 /*
 page 1 = 0 ($pageNum-1) * num_of_rows_per_page
@@ -37,33 +37,14 @@ $rows = db_select($query);
 </head>
 
 <body>
-    <!--NAVIGATION BAR-->
-    <nav>
-        <div class="nav-wrapper">
-            <!-- Dropdown Structure -->
-            <ul id="dropdown1" class="dropdown-content">
-                <li><a href="#!">Profile</a></li>
-                <li><a href="#!">Signout</a></li>
-            </ul>
-            <nav>
-                <div class="nav-wrapper">
-                    <a href="#!" class="brand-logo center">Contact Info</a>
-                    <ul class="right hide-on-med-and-down">
-
-                        <!-- Dropdown Trigger -->
-                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="material-icons right">more_vert</i></a></li>
-                    </ul>
-                </div>
-            </nav>
-            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        </div>
-    </nav>
-    <!--/NAVIGATION BAR-->
+    <?php
+    include_once("./includes/navbar.inc.php");
+    ?>
 
     <!-- Add a New Contact Link-->
     <div class="row mt50">
         <div class="col s12 right-align">
-            <a class="btn waves-effect waves-light blue lighten-2" href="add-contact.html"><i class="material-icons left">add</i> Add
+            <a class="btn waves-effect waves-light blue lighten-2" href="add-contact.php"><i class="material-icons left">add</i> Add
                 New</a>
         </div>
     </div>
@@ -92,7 +73,7 @@ $rows = db_select($query);
                     foreach ($rows as $row) :
                     ?>
                         <tr>
-                            <td><img class="circle" src="images/users/<?= $row['image_name']; ?>" alt="" height="60%"></td>
+                            <td><img class="circle" src="images/users/<?= get_image_file_name($row['image_name'], $row['id']); ?>" alt="" width="100px"></td>
                             <td><?= $row['first_name'] . " " . $row['last_name']; ?></td>
                             <td><?= $row['email']; ?></td>
                             <td><?= $row['birthdate']; ?></td>
