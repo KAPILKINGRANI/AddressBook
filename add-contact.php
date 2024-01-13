@@ -83,29 +83,31 @@ if (isset($_POST['action'])) {
             <form class="col s12 formValidate" action="" id="add-contact-form" method="POST" enctype="multipart/form-data">
                 <div class="row mb10">
                     <div class="input-field col s6">
-                        <input id="first_name" name="first_name" type="text" class="validate" data-error=".first_name_error">
+                        <input id="first_name" name="first_name" type="text" class="validate" data-error=".first_name_error" value="<?= old($_POST, 'first_name'); ?>">
                         <label for="first_name">First Name</label>
-                        <div class="first_name_error "><?= isset($first_name) && empty($first_name) ?
-                                                            "Please Fill" : " " ?></div>
+                        <div class="first_name_error error"><?= isset($first_name) && empty($first_name) ?
+                                                                "Please Fill" : " " ?></div>
                     </div>
                     <div class="input-field col s6">
-                        <input id="last_name" name="last_name" type="text" class="validate" data-error=".last_name_error">
+                        <input id="last_name" name="last_name" type="text" class="validate" data-error=".last_name_error" value="<?= old($_POST, 'last_name'); ?>">
                         <label for="last_name">Last Name</label>
-                        <div class="last_name_error "><?= isset($last_name) && empty($last_name) ?
-                                                            "Please Fill" : " " ?></div>
+                        <div class="last_name_error error"><?= isset($last_name) && empty($last_name) ?
+                                                                "Please Fill" : " " ?></div>
                     </div>
                 </div>
                 <div class="row mb10">
                     <div class="input-field col s6">
-                        <input id="email" name="email" type="email" class="validate" data-error=".email_error"><?= isset($email) && empty($email) ?
-                                                                                                                    "Please Fill" : " " ?>
+                        <input id="email" name="email" type="email" class="validate" data-error=".email_error " value="<?= old($_POST, 'email'); ?>">
                         <label for="email">Email</label>
-                        <div class="email_error "></div>
+                        <div class="email_error error">
+                            <?= isset($email) && empty($email) ?
+                                "Please Fill" : " " ?>
+                        </div>
                     </div>
                     <div class="input-field col s6">
-                        <input id="birthdate" name="birthdate" type="text" class="datepicker" data-error=".birthday_error">
+                        <input id="birthdate" name="birthdate" type="text" class="datepicker" data-error=".birthday_error" value="<?= old($_POST, 'birthdate'); ?>">
                         <label for="birthdate">Birthdate</label>
-                        <div class="birthday_error ">
+                        <div class="birthday_error error">
                             <?= isset($birthdate) && empty($birthdate) ?
                                 "Please Fill" : " " ?>
                         </div>
@@ -113,18 +115,18 @@ if (isset($_POST['action'])) {
                 </div>
                 <div class="row mb10">
                     <div class="input-field col s12">
-                        <input id="telephone" name="telephone" type="tel" class="validate" data-error=".telephone_error">
+                        <input id="telephone" name="telephone" type="tel" class="validate" data-error=".telephone_error" value="<?= old($_POST, 'telephone'); ?>">
                         <label for="telephone">Telephone</label>
-                        <div class="telephone_error "><?= isset($telephone) && empty($telephone) ?
-                                                            "Please Fill" : " " ?></div>
+                        <div class="telephone_error error"><?= isset($telephone) && empty($telephone) ?
+                                                                "Please Fill" : " " ?></div>
                     </div>
                 </div>
                 <div class="row mb10">
                     <div class="input-field col s12">
-                        <textarea id="address" name="address" class="materialize-textarea" data-error=".address_error"></textarea>
+                        <textarea id="address" name="address" class="materialize-textarea" data-error=".address_error" value="<?= old($_POST, 'address'); ?>"></textarea>
                         <label for="address">Address</label>
-                        <div class="address_error "><?= isset($address) && empty($address) ?
-                                                        "Please Fill" : " " ?></div>
+                        <div class="address_error error"><?= isset($address) && empty($address) ?
+                                                                "Please Fill" : " " ?></div>
                     </div>
                 </div>
                 <div class="row mb10">
